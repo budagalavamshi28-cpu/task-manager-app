@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Task Manager</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+  <!-- AUTH SECTION -->
+  <div id="auth-section">
+    <div class="auth-box">
+      <h1>Task Manager</h1>
+      <div class="tabs">
+        <button class="tab active" onclick="showTab('login')">Login</button>
+        <button class="tab" onclick="showTab('signup')">Sign Up</button>
+      </div>
+
+      <!-- Login Form -->
+      <div id="login-form">
+        <input type="email" id="login-email" placeholder="Email"/>
+        <input type="password" id="login-password" placeholder="Password"/>
+        <button class="btn-primary" onclick="login()">Login</button>
+      </div>
+
+      <!-- Signup Form -->
+      <div id="signup-form" style="display:none">
+        <input type="text" id="signup-name" placeholder="Full Name"/>
+        <input type="email" id="signup-email" placeholder="Email"/>
+        <input type="password" id="signup-password" placeholder="Password"/>
+        <button class="btn-primary" onclick="signup()">Create Account</button>
+      </div>
+
+      <p id="auth-message"></p>
+    </div>
+  </div>
+
+  <!-- DASHBOARD SECTION -->
+  <div id="dashboard-section" style="display:none">
+    <nav>
+      <h2>Task Manager</h2>
+      <div>
+        <span id="user-name"></span>
+        <button class="btn-logout" onclick="logout()">Logout</button>
+      </div>
+    </nav>
+
+    <div class="container">
+      <!-- Add Task -->
+      <div class="add-task-box">
+        <h3>Add New Task</h3>
+        <input type="text" id="task-title" placeholder="Task title"/>
+        <textarea id="task-desc" placeholder="Description (optional)"></textarea>
+        <div class="task-options">
+          <select id="task-priority">
+            <option value="low">Low Priority</option>
+            <option value="medium" selected>Medium Priority</option>
+            <option value="high">High Priority</option>
+          </select>
+          <button class="btn-primary" onclick="addTask()">Add Task</button>
+        </div>
+      </div>
+
+      <!-- Filter Buttons -->
+      <div class="filters">
+        <button class="filter-btn active" onclick="filterTasks('all', this)">All</button>
+        <button class="filter-btn" onclick="filterTasks('pending', this)">Pending</button>
+        <button class="filter-btn" onclick="filterTasks('in-progress', this)">In Progress</button>
+        <button class="filter-btn" onclick="filterTasks('completed', this)">Completed</button>
+      </div>
+
+      <!-- Tasks List -->
+      <div id="tasks-list"></div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
